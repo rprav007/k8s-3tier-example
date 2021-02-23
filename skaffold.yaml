@@ -1,0 +1,12 @@
+apiVersion: skaffold/v2beta4
+kind: Config
+build:
+  artifacts:
+    - image: gcr.io/pr-anthos-demo/react-student-management-web-app
+      context: ./react-student-management-web-app
+    - image: gcr.io/pr-anthos-demo/spring-boot-student-app-api
+      context: ./spring-boot-student-app-api
+deploy:
+  kubectl:
+    manifests:
+      - ./kubernetes-manifests/**.yaml
