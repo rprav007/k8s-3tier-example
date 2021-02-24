@@ -14,7 +14,6 @@ spec:
     spec:
       containers:
         - name: student-app-client
-          image: gcr.io/pr-anthos-demo/react-student-management-web-app
-          imagePullPolicy: Always
+          image: react-student-management-web-app
           ports:
             - containerPort: 80

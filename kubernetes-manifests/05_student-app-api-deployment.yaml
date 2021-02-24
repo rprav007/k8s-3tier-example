@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
         - name: student-app-api
-          image: gcr.io/pr-anthos-demo/spring-boot-student-app-api
-          imagePullPolicy: Always
+          image: spring-boot-student-app-api
           ports:
             - containerPort: 8080
           env:

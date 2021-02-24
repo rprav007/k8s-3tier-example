@@ -1,12 +1,23 @@
-apiVersion: skaffold/v2beta4
+apiVersion: skaffold/v2beta8
 kind: Config
+metadata:
+  name: kubernetes-full-stack-example
 build:
   artifacts:
-    - image: gcr.io/pr-anthos-demo/react-student-management-web-app
-      context: ./react-student-management-web-app
-    - image: gcr.io/pr-anthos-demo/spring-boot-student-app-api
-      context: ./spring-boot-student-app-api
+  - image: react-student-management-web-app
+    context: react-student-management-web-app
+  - image: spring-boot-student-app-api
+    context: spring-boot-student-app-api
 deploy:
   kubectl:
     manifests:
-      - ./kubernetes-manifests/**.yaml
+    - kubernetes-manifests/00_student-app-client-deployment.yaml
+    - kubernetes-manifests/01_student-app-client-service.yaml
+    - kubernetes-manifests/02_mongo-persistent-volume-claim.yaml
+    - kubernetes-manifests/03_mongo-deployment.yaml
+    - kubernetes-manifests/04_mongo-service.yaml
+    - kubernetes-manifests/05_student-app-api-deployment.yaml
+    - kubernetes-manifests/06_student-app-api-service.yaml
+    - kubernetes-manifests/07_student-app-ingress.yaml
+
+  

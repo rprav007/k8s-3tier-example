@@ -87,6 +87,7 @@ const StudentList = () => {
         <h4>Student List</h4>
 
         <ul className="list-group">
+        {console.log(students)}
           {students &&
             students.map((student, index) => (
               <li
