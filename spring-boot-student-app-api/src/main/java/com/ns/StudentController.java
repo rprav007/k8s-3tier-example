@@ -95,9 +95,4 @@ public class StudentController {
         }
 
     }
-
-    public StudentController(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
-
 }
