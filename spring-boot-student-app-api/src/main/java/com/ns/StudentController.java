@@ -68,7 +68,7 @@ public class StudentController {
         if (studentData.isPresent()) {
             Student _student = studentData.get();
             _student.setFirstName(student.getFirstName());
-            _student.setLastName(student.getLastName());
+            _student.setLastName(student.getFirstName());
             return new ResponseEntity<>(studentRepository.save(_student), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
