@@ -51,11 +51,14 @@ public class StudentController {
     @PostMapping("/students")
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         try {
-            Student _student = studentRepository.save(new Student(student.getFirstName(), student.getLastName()));
+            String fn = student.getFirstName();
+            String ln = student.getFirstName();
+            Student _student = studentRepository.save(new Student(fn, ln));
             return new ResponseEntity<>(_student, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
         }
+
     }
 
     @PutMapping("/students/{id}")

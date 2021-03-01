@@ -8,16 +8,22 @@ build:
     context: react-student-management-web-app
   - image: spring-boot-student-app-api
     context: spring-boot-student-app-api
+    jib: {}
 deploy:
   kubectl:
     manifests:
-    - kubernetes-manifests/00_student-app-client-deployment.yaml
-    - kubernetes-manifests/01_student-app-client-service.yaml
-    - kubernetes-manifests/02_mongo-persistent-volume-claim.yaml
-    - kubernetes-manifests/03_mongo-deployment.yaml
-    - kubernetes-manifests/04_mongo-service.yaml
-    - kubernetes-manifests/05_student-app-api-deployment.yaml
-    - kubernetes-manifests/06_student-app-api-service.yaml
-    - kubernetes-manifests/07_student-app-ingress.yaml
-
-  
+    - kubernetes-manifests/01_student-app-client-deployment.yaml
+    - kubernetes-manifests/02_student-app-client-service.yaml
+    - kubernetes-manifests/03_mongo-persistent-volume-claim.yaml
+    - kubernetes-manifests/04_mongo-deployment.yaml
+    - kubernetes-manifests/05_mongo-service.yaml
+    - kubernetes-manifests/06_student-app-api-deployment.yaml
+    - kubernetes-manifests/07_student-app-api-service.yaml
+    - kubernetes-manifests/08_student-app-ingress.yaml
+portForward:
+- resourceType: service
+  resourceName: student-app-client-service
+  namespace: default
+  port: 80
+  address: 192.168.64.2
+  localPort: 80

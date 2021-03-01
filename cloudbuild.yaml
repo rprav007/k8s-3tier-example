@@ -1,0 +1,15 @@
+steps:
+  - name: 'gcr.io/k8s-skaffold/skaffold'
+    args:
+      - gcloud 
+      - container
+      - clusters
+      - get-credentials 
+      - qa-cluster 
+      - --zone=us-west1-a
+  - name: 'gcr.io/k8s-skaffold/skaffold'
+    args:
+      - skaffold
+      - run
+      - --default-repo=gcr.io/pr-anthos-demo
+      - --namespace=demo-app

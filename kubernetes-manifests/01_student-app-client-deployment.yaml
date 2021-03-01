@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-app-client
+spec:
+  selector:
+    matchLabels:
+      app: student-app-client
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        debug.cloud.google.com/config: "{}"
+      labels:
+        app: student-app-client
+    spec:
+      containers:
+        - name: student-app-client
+          image: react-student-management-web-app
+          ports:
+            - containerPort: 80
