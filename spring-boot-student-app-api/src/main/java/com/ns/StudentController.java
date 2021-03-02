@@ -52,7 +52,7 @@ public class StudentController {
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         try {
             String fn = student.getFirstName();
-            String ln = student.getFirstName();
+            String ln = student.getLastName();
             Student _student = studentRepository.save(new Student(fn, ln));
             return new ResponseEntity<>(_student, HttpStatus.CREATED);
         } catch (Exception e) {
