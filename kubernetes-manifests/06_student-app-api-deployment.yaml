@@ -12,6 +12,12 @@ spec:
       labels:
         app: student-app-api
     spec:
+      initContainers:
+      - name: init-db-ready
+        image: mongo:4
+        command: ['/bin/sh', '-c']
+        args:
+         - echo "Waiting for mongodb to start...";until (mongo --host mongo:27017 >/dev/null 2>&1) do echo "Waiting for connection for 2 sec."; sleep 2; done
       containers:
         - name: student-app-api
           image: spring-boot-student-app-api
